@@ -1,32 +1,53 @@
-const VERSION = "utube-v1";
+// service-worker.js
 
-self.addEventListener("install", (e) => {
-  e.waitUntil(
+// Cache name
+const cacheName = "utube-v1.1";
+
+// Files to cache
+const filesToCache = ["/index.html", "/utube-bundle.js", "/utube-styles.css"];
+
+// Install event
+self.addEventListener("install", (event) => {
+  event.waitUntil(
     caches
-      .open(VERSION)
-      .then((cache) =>
-        cache.addAll(["/index.html", "/utube-bundle.js", "/utube-styles.css"])
-      )
+      .open(cacheName)
+      .then((cache) => {
+        return cache.addAll(filesToCache);
+      })
+      .then(() => {
+        self.skipWaiting();
+      })
   );
 });
 
-self.addEventListener("activate", (e) => {
-  e.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((name) => {
-          if (name !== VERSION) {
-            return caches.delete(name);
-          }
-        })
-      );
-    })
+// Activate event
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((name) => {
+            if (name !== cacheName) {
+              return caches.delete(name);
+            }
+          })
+        );
+      })
+      .then(() => {
+        self.clients.claim();
+      })
   );
 });
-self.addEventListener("fetch", (e) => {
-  e.respondWith(
-    caches.match(e.request).then((response) => {
-      return response || fetch(e.request);
+
+// Fetch event
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      if (response) {
+        return response;
+      }
+      return fetch(event.request);
     })
   );
 });
