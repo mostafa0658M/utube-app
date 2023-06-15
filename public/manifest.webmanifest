@@ -1,7 +1,7 @@
 {
     "theme_color": "#ff0000",
     "background_color": "#000000",
-    "display": "browser",
+    "display": "standalone",
     "scope": "/",
     "start_url": "/",
     "name": "Utube App",
@@ -33,7 +33,8 @@
     "shortcuts":[
         {
             "name": "New Videos",
-            "url":"/"
+            "url":"/",
+            "icon":"/assets/new-video.png"
         }
     ]
 }
