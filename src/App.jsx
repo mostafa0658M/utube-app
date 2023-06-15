@@ -11,9 +11,11 @@ import {
   VideoDetail,
 } from "./pages";
 const App = () => {
+  const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [useLocation()]);
+    console.log("s");
+  }, [location]);
   return (
     <BrowserRouter>
       <Box sx={{ backgroundColor: "#000" }}>
