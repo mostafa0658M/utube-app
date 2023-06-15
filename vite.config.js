@@ -11,4 +11,9 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    mimeTypes: {
+      "application/javascript": ["js"],
+    },
+  },
 });

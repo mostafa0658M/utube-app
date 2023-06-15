@@ -50,7 +50,13 @@ const VideoDetail = () => {
               url={`https://youtube.com/watch?v=${id}`}
               controls
             />
-            <Typography color='#fff' variant='h5' fontWeight='bold' p={2}>
+            <Typography
+              color='#fff'
+              variant='h5'
+              fontWeight='bold'
+              p={2}
+              pb={0}
+            >
               {title}
             </Typography>
 
