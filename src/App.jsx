@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Navbar } from "./components";
 import {
   ChannelDetail,
@@ -11,7 +11,9 @@ import {
   VideoDetail,
 } from "./pages";
 const App = () => {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [useLocation()]);
   return (
     <BrowserRouter>
       <Box sx={{ backgroundColor: "#000" }}>
