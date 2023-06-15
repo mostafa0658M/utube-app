@@ -14,22 +14,19 @@ const App = () => {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log("s");
   }, [location]);
   return (
-    <BrowserRouter>
-      <Box sx={{ backgroundColor: "#000" }}>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Feed />} />
-          <Route path='/video/:id' element={<VideoDetail />} />
-          <Route path='/channel/:id' element={<ChannelDetail />} />
-          <Route path='/playlist/:id' element={<PlaylistDetail />} />
-          <Route path='/search/:searchKey' element={<SearchFeed />} />
-          <Route path='*' element={<ErrorPage />} />
-        </Routes>
-      </Box>
-    </BrowserRouter>
+    <Box sx={{ backgroundColor: "#000" }}>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Feed />} />
+        <Route path='/video/:id' element={<VideoDetail />} />
+        <Route path='/channel/:id' element={<ChannelDetail />} />
+        <Route path='/playlist/:id' element={<PlaylistDetail />} />
+        <Route path='/search/:searchKey' element={<SearchFeed />} />
+        <Route path='*' element={<ErrorPage />} />
+      </Routes>
+    </Box>
   );
 };
 

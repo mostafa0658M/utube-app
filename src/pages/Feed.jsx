@@ -30,8 +30,8 @@ const Feed = () => {
         }}
         ref={alertRef}
       >
-        <AlertTitle>API quota reached!</AlertTitle>
-        try again later.
+        <AlertTitle>Fetch Error!</AlertTitle>
+        check your internet, or maybe API quota Reached
       </Alert>
       <Box
         sx={{
